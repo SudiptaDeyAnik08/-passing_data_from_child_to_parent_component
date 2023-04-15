@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Child from './State_Lifting/Child.js'
+import { useState } from 'react';
+
 function App() {
+  const [a,setA] = useState();
+
+  const handelChildData = (info)=>{
+    console.log("This is App/Parent Body"+info);
+    setA(info);
+  }
+
+
+
+  const dataInfo = 'Hi from parante (App)'
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Child data={dataInfo} onChangeData ={handelChildData}></Child>
+
+      <p>{a}</p>
     </div>
   );
 }
